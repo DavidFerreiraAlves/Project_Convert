@@ -1,7 +1,7 @@
 //Cotação de moedas do dia.
-const USD = 4.86;
-const EUR = 5.27;
-const GBP = 6.25;
+const USD = 4.87;
+const EUR = 5.32;
+const GBP = 6.08;
 const JPY = 0.04;
 const AUD = 3.67;
 const CAD = 3.76;
@@ -59,7 +59,16 @@ form.onsubmit = (event) => {
 function convertCurrency(amount, price, symbol) {
     try {
         // Exibindo a cotação da moeda selecionada.
-        description.textContent = ` ${symbol} 1 = ${formatCurrencyBRL(price)}`
+        description.textContent = ` ${symbol} 1 = ${formatCurrencyBRL(price)}`;
+
+        let total = amount * price;
+
+        // Verificando se o valor não é um número.
+        if(isNaN(total)) {
+            return alert ("não foi possível converter. Tente novamente.");
+        }
+
+        result.textContent = `${formatCurrencyBRL(total)}`;
 
         // Aplica a classe que exibe o footer para mostrar o resultado.
         footer.classList.add("show-result");
